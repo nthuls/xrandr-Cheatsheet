@@ -1,0 +1,92 @@
+Here's a concise cheat sheet for using `xrandr`, the command-line interface to RandR (Resize and Rotate) extension of the X Window System:
+
+### Basic Commands
+- **Query Available Displays and Resolutions**:
+  ```sh
+  xrandr -q
+  ```
+- **Set Display Resolution**:
+  ```sh
+  xrandr --output <output> --mode <width>x<height>
+  ```
+- **Change Orientation**:
+  ```sh
+  xrandr --output <output> --rotate <orientation>
+  ```
+  Orientations: `normal`, `inverted`, `left`, `right`
+
+### Advanced Positioning
+- **Position Display Relative to Another**:
+  ```sh
+  xrandr --output <output1> --<position> <output2>
+  ```
+  Positions: `--left-of`, `--right-of`, `--above`, `--below`, `--same-as`
+
+- **Set Absolute Position**:
+  ```sh
+  xrandr --output <output> --pos <x>x<y>
+  ```
+
+### Screen Size and Rate
+- **Change Screen Size**:
+  ```sh
+  xrandr --fb <width>x<height>
+  ```
+- **Change Refresh Rate**:
+  ```sh
+  xrandr --output <output> --rate <rate>
+  ```
+
+### Scaling and Transformations
+- **Scale Output**:
+  ```sh
+  xrandr --output <output> --scale <x>x<y>
+  ```
+- **Custom Transformation (Matrix)**:
+  ```sh
+  xrandr --output <output> --transform <a>,<b>,<c>,<d>,<e>,<f>,<g>,<h>,<i>
+  ```
+
+### Multiple Monitors
+- **Set Primary Monitor**:
+  ```sh
+  xrandr --output <output> --primary
+  ```
+- **Turn Off a Display**:
+  ```sh
+  xrandr --output <output> --off
+  ```
+
+### Additional Settings
+- **Adjust Brightness**:
+  ```sh
+  xrandr --output <output> --brightness <value>
+  ```
+- **Adjust Gamma**:
+  ```sh
+  xrandr --output <output> --gamma <r>:<g>:<b>
+  ```
+
+### Custom Resolutions
+- **Add New Resolution Mode**:
+  ```sh
+  xrandr --newmode <name> <clock> <hdisp> <hsync-start> <hsync-end> <htotal> <vdisp> <vsync-start> <vsync-end> <vtotal> [flags]
+  ```
+- **Assign Mode to Display**:
+  ```sh
+  xrandr --addmode <output> <name>
+  ```
+
+### Reflection and Rotation
+- **Reflect Output**:
+  ```sh
+  xrandr --output <output> --reflect <axis>
+  ```
+  Axes: `x`, `y`, `xy`
+
+### Tips
+- Use `xrandr -q` to list all connected outputs and available modes.
+- The `--output` parameter refers to your monitor (e.g., HDMI-0, DP-1).
+- Changes made with `xrandr` are not permanent; they revert after a reboot. To make changes permanent, add the `xrandr` commands to your `.xinitrc`, `.bash_profile`, or another startup script, depending on your environment.
+
+This cheat sheet covers the most common `xrandr` functionalities. For more complex setups or troubleshooting, refer to the `xrandr` manual or online resources.
